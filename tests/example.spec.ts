@@ -16,7 +16,7 @@ test.describe("Implemented in a for loop", () => {
   for(const characterClass of classIndex){ // classIndex created from the API
     test.describe(`${characterClass}`, () => {
       
-      const apiPromise = api.getApi2014ClassesIndex( { params: { _index: characterClass } } ) // reuses data when possible to not perform unneeded calls
+      const apiPromise = api.getApi2014ClassesIndex( { params: { _index: characterClass } } ) // reuses data when possible to not perform unneeded calls. Not using await here as mentioned below.
       
       test('index property matches', async () => {
         const apiResolved = await apiPromise; // playwright does not like using an await in test.describe(). Other frameworks would probably handled this more efficiently
